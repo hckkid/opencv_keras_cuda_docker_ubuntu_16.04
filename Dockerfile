@@ -6,14 +6,6 @@ WORKDIR /sources
 
 RUN wget https://github.com/opencv/opencv/archive/3.3.0.tar.gz
 
-RUN tar -xvzf 3.3.0.tar.gz
-RUN rm 3.3.0.tar.gz
-
-RUN wget https://github.com/opencv/opencv_contrib/archive/3.3.0.tar.gz 
-
-RUN tar -xvzf 3.3.0.tar.gz
-RUN rm 3.3.0.tar.gz
-
 RUN mkdir build
 WORKDIR /sources/build
 
@@ -33,10 +25,21 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         unzip \
 	python3-pip \
 	python3-setuptools \
+	wget \
         && \
 apt-get clean
 
 RUN pip3 install numpy
+
+RUN wget https://github.com/opencv/opencv/archive/3.3.0.tar.gz
+
+RUN tar -xvzf 3.3.0.tar.gz
+RUN rm 3.3.0.tar.gz
+
+RUN wget https://github.com/opencv/opencv_contrib/archive/3.3.0.tar.gz 
+
+RUN tar -xvzf 3.3.0.tar.gz
+RUN rm 3.3.0.tar.gz
 
 RUN cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local -D OPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules ../opencv
 
