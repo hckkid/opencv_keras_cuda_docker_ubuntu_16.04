@@ -39,7 +39,7 @@ RUN wget https://github.com/opencv/opencv_contrib/archive/3.3.0.tar.gz
 RUN tar -xvzf 3.3.0.tar.gz
 RUN rm 3.3.0.tar.gz
 
-RUN cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local -D OPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules ../opencv
+RUN cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local -D OPENCV_EXTRA_MODULES_PATH=../opencv_contrib-3.3.0/modules ../opencv-3.3.0
 
 RUN make -j4 && make install
 
