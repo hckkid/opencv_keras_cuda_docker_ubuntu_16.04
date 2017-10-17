@@ -4,9 +4,6 @@ MAINTAINER satyender <satyenderyadav4993@gmail.com>
 
 WORKDIR /sources
 
-RUN mkdir build
-WORKDIR /sources/build
-
 RUN apt-get update && apt-get install -y --no-install-recommends \
 	build-essential \
 	cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev \
@@ -38,6 +35,9 @@ RUN wget https://github.com/opencv/opencv_contrib/archive/3.3.0.tar.gz
 
 RUN tar -xvzf 3.3.0.tar.gz
 RUN rm 3.3.0.tar.gz
+
+RUN mkdir build
+WORKDIR /sources/build
 
 RUN cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local -D OPENCV_EXTRA_MODULES_PATH=../opencv_contrib-3.3.0/modules ../opencv-3.3.0
 
