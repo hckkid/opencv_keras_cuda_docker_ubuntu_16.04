@@ -4,8 +4,6 @@ MAINTAINER satyender <satyenderyadav4993@gmail.com>
 
 WORKDIR /sources
 
-RUN wget https://github.com/opencv/opencv/archive/3.3.0.tar.gz
-
 RUN mkdir build
 WORKDIR /sources/build
 
